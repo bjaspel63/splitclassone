@@ -1,4 +1,4 @@
-const signalingUrl = "wss://splitclass-production.up.railway.app";
+const signalingUrl = "wss://splitclassone-production.up.railway.app";
 
 const video = document.getElementById("video");
 const roomInput = document.getElementById("roomInput");
