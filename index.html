@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SplitClass + Trinket</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href = "favicon.jpg"/>
+</head>
+<body>
+  <div id="app">
+    <!-- Header (common) -->
+    <header>
+      <!-- Room name display below input -->
+      <div id="roomNameDisplay" style="margin-top: 6px; font-weight: bold; color: white;"></div>
+      <!-- Display joined info with labels -->
+      <div id="joinedInfo" class="joined-info" role="region" aria-live="polite">
+        <div id="nameContainer" class="hidden">
+          <label for="displayName" class="label-bold">Your Name:</label>
+          <span id="displayName" class="bold-text"></span>
+        </div>
+        <div id="roomContainer" class="hidden">
+          <label for="displayRoom" class="label-bold">Room Name:</label>
+          <span id="displayRoom" class="bold-text"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Setup Section -->
+    <section id="setup">
+      <h1>Welcome to SplitClass</h1>
+
+      <div class="input-group">
+        <label for="studentNameInput">Your Name</label>
+        <input id="studentNameInput" type="text" placeholder="Enter your name" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="roomInput">Room Name</label>
+        <input id="roomInput" type="text" placeholder="Enter room name" autocomplete="off" />
+      </div>
+
+      <div class="buttons">
+        <button id="btnTeacher" type="button">Start as Teacher</button>
+        <button id="btnStudent" type="button">Join as Student</button>
+      </div>
+
+      <p id="status" class="status-text" role="alert" aria-live=assertive"></p><br><br>
+         <p>© 2025 SplitClass | Made by bjaspel </p>
+    </section>
+
+    <!-- Main Section (Teacher or Student view) -->
+    <section id="main" class="hidden" role="main" aria-label="Classroom">
+      <!-- Left Pane (Teacher: 25% student list, Student: 50% video) -->
+      <div id="leftPane">
+        <!-- Teacher student list -->
+        <div id="studentsListContainer" class="hidden" aria-label="Students attending">
+          <h2>Students Attending (<span id="studentCountDisplay">0</span>)</h2>
+          <ul id="studentsList" role="list"></ul>
+        </div>
+
+        <!-- Student video for student role -->
+        <video id="video" autoplay playsinline muted class="hidden"></video>
+      </div>
+
+      <!-- Right Pane (Teacher notes 75%, Student Trinket iframe 50%, PDF viewer) -->
+      <div id="rightPane">
+        <!-- Teacher notes -->
+        <textarea id="notesArea" placeholder="Type notes here..." class="hidden" aria-label="Teacher notes"></textarea>
+
+        <!-- Trinket iframe for student -->
+        <iframe
+          id="editorFrame"
+          src="https://trinket.io/embed/python/3d8d7ce66b"
+          allowfullscreen
+          frameborder="0"
+          class="hidden"
+          title="Python coding environment"
+        ></iframe>
+
+        <!-- PDF Viewer container moved inside rightPane -->
+        <div id="pdfViewerContainer" class="hidden" style="margin-top: 1rem; height: 500px;">
+          <embed id="pdfViewer" type="application/pdf" width="100%" height="100%" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls for Teacher -->
+    <div id="teacherControls" class="hidden control-panel" role="region" aria-label="Teacher controls">
+      <button id="btnDownloadNotes" type="button">Download Notes</button>
+      <button id="btnShareScreen" type="button">Share Screen</button>
+      <button id="btnCloseSessionTeacher" type="button">Close Session</button>
+      
+      <!-- PDF Upload and Clear PDF buttons -->
+      <button id="btnClearPdf" type="button" style="display:none; margin-left: 0.5rem;">Clear PDF</button>
+      <input type="file" id="pdfUpload" accept="application/pdf" style="margin-left: 1rem;" />
+    </div>
+
+    <!-- Controls for Student -->
+    <div id="studentControls" class="hidden control-panel" role="region" aria-label="Student controls">
+      <button id="btnCloseSessionStudent" type="button">Close Session</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
