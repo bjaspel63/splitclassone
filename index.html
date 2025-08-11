@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SplitClass + Trinket</title>
+  <title>SplitClass + OneCompiler</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href = "favicon.jpg"/>
 </head>
@@ -63,19 +63,17 @@
         <video id="video" autoplay playsinline muted class="hidden"></video>
       </div>
 
-      <!-- Right Pane (Teacher notes 75%, Student Trinket iframe 50%, PDF viewer) -->
+      <!-- Right Pane (Teacher notes 75%, Student OneCompiler iframe 50%, PDF viewer) -->
       <div id="rightPane">
         <!-- Teacher notes -->
         <textarea id="notesArea" placeholder="Type notes here..." class="hidden" aria-label="Teacher notes"></textarea>
 
-        <!-- Trinket iframe for student -->
+        <!-- OneCompiler iframe for student -->
         <iframe
-          id="editorFrame"
-          src="https://trinket.io/embed/python/3d8d7ce66b"
-          allowfullscreen
-          frameborder="0"
-          class="hidden"
-          title="Python coding environment"
+           frameBorder="0"
+           height="450px"  
+           src="https://onecompiler.com/embed/" 
+           width="100%"
         ></iframe>
 
         <!-- PDF Viewer container moved inside rightPane -->
